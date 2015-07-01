@@ -1,5 +1,5 @@
-server_key=JXwmbJf2+_=eG&+e
-service_url=http://localhost:8080/openfda/service
+server_key=valador18f
+service_url=http://localhost:8080/openfda-dev/service
 test_lookup_partial=ibu
 test_lookup_match=IBUPROFEN
 test_reaction_search=pain
