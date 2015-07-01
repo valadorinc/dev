@@ -45,15 +45,14 @@ try {
 				<select name="reaction1">
 				<%= ReactionList%>
 				</select>
+				 or type the name: <input type="text" name="reaction1a" size="40">
 			</p>
 			<p>
 				Enter another reaction: 
 				<select name="reaction2">
 				<%= ReactionList%>
 				</select>
-			</p>
-			<p>
-				Enter a limit <input type="text" name="limit" value="10">
+				or type the name: <input type="text" name="reaction2a" size="40">
 			</p>
 				<input type="submit">
 		</form>
