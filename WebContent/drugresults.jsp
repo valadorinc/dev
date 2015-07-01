@@ -7,9 +7,14 @@
 
 String Drug = "";
 String Drug2 = "";
+String Drug1a = "";
+String Drug2a = "";
+
 String Limit = "";
 if (request.getParameter("drug1") !=null) Drug = request.getParameter("drug1");
 if (request.getParameter("drug2") !=null) Drug2 = request.getParameter("drug2");
+if (request.getParameter("drug1a") !=null) Drug1a = request.getParameter("drug1a");
+if (request.getParameter("drug2a") !=null) Drug2a = request.getParameter("drug2a");
 if (request.getParameter("limit") !=null) Limit = request.getParameter("limit");
 
 String Message = "";
@@ -25,6 +30,8 @@ if (!Drug.equals("0")){
 	    String DrugList = "";
 	    DrugList += Drug;
 	    if (!Drug2.equals("0")) DrugList += "~" + Drug2;
+	    if (!Drug1a.equals("")) DrugList += "~" + Drug1a;
+	    if (!Drug2a.equals("")) DrugList += "~" + Drug2a;
 	
 		String ServiceURI = "/fda/" + ServerKey + "/search/drug/" + DrugList;
 	

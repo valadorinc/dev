@@ -46,15 +46,14 @@ try {
 				<select name="drug1">
 				<%= DrugList %>
 				</select>
+				 or type the name: <input type="text" name="drug1a" size="40">
 			</p>
 			<p>
 				Enter another drug: 
 				<select name="drug2">
 				<%= DrugList %>
 				</select>
-			</p>
-			<p>
-				Enter a limit <input type="text" name="limit" value="10">
+				 or type the name: <input type="text" name="drug2a" size="40">
 			</p>
 				<input type="submit">
 		</form>

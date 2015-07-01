@@ -8,6 +8,12 @@
 </head>
 <body>
 <h1>OpenFDA</h1>
+<p>
+	Submission for pool2.
+</p>
+<p>
+	Select functional area to get output.
+</p>
 <a href="drugsearch.jsp">Drug Interactions</a><br>
 <a href="reactionsearch.jsp">Adverse Reactions</a><br>
 <a href="chart-responsive.jsp">Chart</a><br>
