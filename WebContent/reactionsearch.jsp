@@ -45,17 +45,18 @@ try {
 				<select name="reaction1">
 				<%= ReactionList%>
 				</select>
-				 or type the name: <input type="text" name="reaction1a" size="40">
+				 <!-- or type the name: <input type="text" name="reaction1a" size="40"> -->
 			</p>
 			<p>
 				Enter another reaction: 
 				<select name="reaction2">
 				<%= ReactionList%>
 				</select>
-				or type the name: <input type="text" name="reaction2a" size="40">
+				<!-- or type the name: <input type="text" name="reaction2a" size="40"> -->
 			</p>
 				<input type="submit">
 		</form>
+		<p><a href="index.jsp">return</a></p>
 	</div>
 </body>
 </html>

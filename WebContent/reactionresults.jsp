@@ -74,9 +74,7 @@ if (!Reaction.equals("0")){
 </head>
 <body>
 	<div>
-		<p>
-			Search Results.
-		</p>
+			<h3>16553. The user can drill down through the output data where applicable</h3>
 		<div id="searchResults">
 			<%=Records %>
 		</div>

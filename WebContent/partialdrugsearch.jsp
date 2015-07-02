@@ -5,6 +5,8 @@
 <%@ page import="openfda.classes.ServerAuth" %>
 <%
 String DrugList = "";
+String PartialName = "";
+if (request.getParameter("PartialName") != null) PartialName = request.getParameter("PartialName");
 String Message = "";
 JSONArray jResults = new JSONArray();
 try {
@@ -14,15 +16,14 @@ try {
     String ServerKey = "";
     ServerAuth serverAuth = new ServerAuth();
     ServerKey = serverAuth.getKey();
-	String ServiceURI = "/fda/" + ServerKey + "/lookup/drugs";
+	String ServiceURI = "/fda/" + ServerKey + "/lookup/drugs/" + PartialName;
 
 	RestClient restClient = new RestClient();
 	JSONObject jResponse = restClient.getService(ServiceURI);
 	JSONObject jBody = jResponse.getJSONObject("Body");
 	jResults = jBody.getJSONArray("results");
-	DrugList = "<option value='0'>Select Drug</option>";
 	for (int i=0; i<jResults.length(); i++){
-		DrugList += "<option value='" + jResults.getString(i) + "'>" + jResults.getString(i) + "</option>";
+		DrugList += jResults.getString(i) + "<br>";
 	}
 
 	
@@ -40,24 +41,8 @@ try {
 </head>
 <body>
 	<div>
-		<form name="subForm" method="post" action="drugresults.jsp">
-			<p>
-				Enter a drug: 
-				<select name="drug1">
-				<%= DrugList %>
-				</select>
-				 <!-- or type the name: <input type="text" name="drug1a" size="40"> -->
-			</p>
-			<p>
-				Enter another drug: 
-				<select name="drug2">
-				<%= DrugList %>
-				</select>
-				 <!-- or type the name: <input type="text" name="drug2a" size="40"> -->
-			</p>
-				<input type="submit">
-		</form>
-		<p><a href="index.jsp">return</a></p>
+		<p>Results</p>
+		<%= DrugList %>
 	</div>
 </body>
 </html>
