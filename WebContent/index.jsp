@@ -13,7 +13,7 @@
 	              <div class="page-header">
 	                <h3>ReactionRx</h3>
 	               </div>
-	                <div>
+	                <div style="width:60%">
 	                	Disclaimer: ReactionRX is intended to provide helpful drug and health information for the general public 
 	                	based on data from openFDA. It is made available with the understanding that Valador Inc., the author of 
 	                	the ReactionRX Content, and openFDA are not engaged in rendering medical, health, psychological, or any 
