@@ -7,12 +7,9 @@
 
 String Reaction = "";
 String Reaction2 = "";
-String Reaction1a = "";
-String Reaction2a = "";
+String ReactionList = "";
 if (request.getParameter("reaction1") !=null) Reaction = request.getParameter("reaction1");
 if (request.getParameter("reaction2") !=null) Reaction2 = request.getParameter("reaction2");
-if (request.getParameter("reaction1a") !=null) Reaction1a = request.getParameter("reaction1a");
-if (request.getParameter("reaction2a") !=null) Reaction2a = request.getParameter("reaction2a");
 
 String Message = "";
 String Records = "";
@@ -24,11 +21,9 @@ if (!Reaction.equals("0")){
 
 		int StatusCode = 0;
 	    String JsonURL = "";
-	    String ReactionList = "";
+	    
 	    ReactionList += Reaction;
 	    if (!Reaction2.equals("0")) ReactionList += "~" + Reaction2;
-	    if (!Reaction2.equals("")) ReactionList += "~" + Reaction1a;
-	    if (!Reaction2.equals("")) ReactionList += "~" + Reaction2a;
 		String ServiceURI = "/fda/" + ServerKey + "/search/reaction/" + ReactionList;
 	
 		RestClient restClient = new RestClient();
@@ -82,6 +77,8 @@ if (!Reaction.equals("0")){
 	                </div>
 	                <div>
 						<div id="searchResults" style="width:60%">
+						<div><%=ReactionList.replace("~", " & ") %></div>
+						<div class="pull-right"><a href="chart-responsive.jsp?ThingType=reactions&ThingList=<%=ReactionList%>">graph results</a></div>
 							<%=Records %>
 						</div>
 	                </div>

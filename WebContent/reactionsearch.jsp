@@ -46,26 +46,28 @@ try {
 	                <h3>Reaction Search</h3>
 	                </div>
 	                <div>
-	                	Search for drugs involved with adverse reactions that have the following reactions:
+	                	<h4>Search for drugs involved with adverse reactions that have the following reactions:</h4>
 	                </div>
 					<div>
-						<form name="subForm" method="post" action="reactionresults.jsp">
-							<p>
-								Enter a reaction: 
-								<select name="reaction1">
-								<%= ReactionList%>
-								</select>
-								 <!-- or type the name: <input type="text" name="reaction1a" size="40"> -->
-							</p>
-							<p>
-								Enter another reaction: 
-								<select name="reaction2">
-								<%= ReactionList%>
-								</select>
-								<!-- or type the name: <input type="text" name="reaction2a" size="40"> -->
-							</p>
+							<form  class="form-horizontal" role="form" name="subForm" method="post" action="reactionresults.jsp">
+								<div class="form-group">
+								  <label class="control-label col-sm-2" for="email">Enter a reaction:</label>
+								  <div class="col-sm-10" style="width:40%">
+								    <select class="form-control" name="reaction1">
+									<%= ReactionList%>
+									</select>
+								  </div>
+								</div>							
+								<div class="form-group">
+								  <label class="control-label col-sm-2" for="email">Enter a reaction:</label>
+								  <div class="col-sm-10" style="width:40%">
+								    <select class="form-control" name="reaction2">
+									<%= ReactionList%>
+									</select>
+								  </div>
+								</div>							
 								<input type="submit">
-						</form>
+							</form>
 					</div>
 	             </div>
 	        </div>

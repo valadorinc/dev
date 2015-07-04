@@ -9,7 +9,7 @@ String Drug = "";
 String Drug2 = "";
 String Drug1a = "";
 String Drug2a = "";
-
+String DrugList = "";
 String Limit = "";
 if (request.getParameter("drug1") !=null) Drug = request.getParameter("drug1");
 if (request.getParameter("drug2") !=null) Drug2 = request.getParameter("drug2");
@@ -27,7 +27,6 @@ if (!Drug.equals("0")){
 
 		int StatusCode = 0;
 	    String JsonURL = "";
-	    String DrugList = "";
 	    DrugList += Drug;
 	    if (!Drug2.equals("0")) DrugList += "~" + Drug2;
 	    if (!Drug1a.equals("")) DrugList += "~" + Drug1a;
@@ -86,6 +85,8 @@ if (!Drug.equals("0")){
 	              </div>
 	                <div>
 	                	<div id="searchResults" style="width:60%">
+	                	<div><%=DrugList.replace("~", " & ") %></div>
+	                	<div class="pull-right"><a href="chart-responsive.jsp?ThingType=drugs&ThingList=<%=DrugList%>">graph results</a></div>
 							<%=Records %>
 						</div>
 	                </div>

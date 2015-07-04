@@ -30,7 +30,7 @@ if (!DrugName.equals("")){
 	 	images = DrugInfo.getJSONArray("images");
  		
 	 	for (int i=0; i<images.length(); i++){
-	 		Images += "'<img src='" + images.getString(i) + "'><br>";
+	 		Images += "'<img class='img-responsive' src='" + images.getString(i) + "'><br>";
 	 	}
 	 	
 	} catch (Exception e) {
@@ -74,7 +74,7 @@ if (!DrugName.equals("")){
 				</div>
 	              
 	              
-	              
+	            <h4 style="padding-top:10px">Media associated with drug</h4>  
 	              
                 <div>
                 	<%=Images%>

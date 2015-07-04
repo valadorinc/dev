@@ -7,7 +7,8 @@
 
 int StatusCode = 0;
 String Message = "";
-String results = "";
+String Version = "";
+String ToolsVersion = "";
 try {
     String ServerKey = "";
     ServerAuth serverAuth = new ServerAuth();
@@ -21,20 +22,15 @@ try {
 	JSONObject jResponse = restClient.getService(ServiceURI);
 	StatusCode = jResponse.getInt("StatusCode");
 	if (StatusCode == 0){
-		String Version = "";
-		String ToolsVersion = "";
  		JSONObject jBody = jResponse.getJSONObject("Body");
  		Version = jBody.getString("Version");
  		JSONObject djwToolsInfo = jBody.getJSONObject("djwToolsInfo");
  		ToolsVersion = djwToolsInfo.getString("djwToolsVersion");
- 		results = "<p>Version: " + Version + "</p>";
- 		results += "<p>Tools Version: " + ToolsVersion + "</p>";
 	} else {
 		Message = jResponse.getString("Message");
-		results = "An error has occurred: " + Message;
 	}
 } catch (Exception e) {
-	results = "An error has occured: " + e;
+	Message = "An error has occured: " + e;
 }
 %>
 <!DOCTYPE html>
@@ -51,8 +47,13 @@ try {
 	              <div class="page-header">
 	                <h3>Application Info</h3>
 	               </div>
-	                <div>
-	                	<%=results%>
+	                <div><%=Message%>
+	                <dl class="dl-horizontal">
+	                	<dt>Version</dt>
+					  	<dd><%=Version %></dd>
+					  	<dt>Tools Version</dt>
+					  	<dd><%=ToolsVersion %></dd>
+					</dl>
 	                </div>
 	             </div>
 	        </div>

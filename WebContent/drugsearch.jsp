@@ -46,25 +46,27 @@ try {
 	                <h3>Drug Search</h3>
 	              </div>
 	                <div>
-	                	Search for adverse reactions involving the following drugs:
+	                	<h4>Search for adverse reactions involving the following drugs:</h4>
 	                </div>
 	                	<div>
-							<form name="subForm" method="post" action="drugresults.jsp">
-								<p>
-									Enter a drug: 
-									<select name="drug1">
-									<%= DrugList %>
+							<form  class="form-horizontal" role="form" name="subForm" method="post" action="drugresults.jsp">
+								<div class="form-group">
+								  <label class="control-label col-sm-2" for="email">Enter a drug name:</label>
+								  <div class="col-sm-10" style="width:40%">
+								    <select class="form-control"  name="drug1">
+											<%= DrugList %>
 									</select>
-									 <!-- or type the name: <input type="text" name="drug1a" size="40"> -->
-								</p>
-								<p>
-									Enter another drug: 
-									<select name="drug2">
-									<%= DrugList %>
+								  </div>
+								</div>							
+								<div class="form-group">
+								  <label class="control-label col-sm-2" for="email">Enter a drug name:</label>
+								  <div class="col-sm-10" style="width:40%">
+								    <select class="form-control"  name="drug2">
+											<%= DrugList %>
 									</select>
-									 <!-- or type the name: <input type="text" name="drug2a" size="40"> -->
-								</p>
-									<input type="submit">
+								  </div>
+								</div>							
+								<input type="submit">
 							</form>
 						</div>
 	             </div>

@@ -5,43 +5,10 @@
 <%@ page import="openfda.classes.ServerAuth" %>
 <%
 
-String Thing1 = "abdominal pain";
-String Thing2 = "";
-String ThingType = "reactions";
-
-String ThingList = "0";
-
-if (request.getParameter("Thing1") !=null) {
-	Thing1 = request.getParameter("Thing1");
-} else {
-	Thing1 = "PREDNISONE";
-}
-if (request.getParameter("Thing2") !=null) {
-	Thing2 = request.getParameter("Thing2");
-	
-} else {
-	Thing2 = "";
-	ThingList = Thing1;
-}
-if (request.getParameter("ThingType") !=null) {
-	ThingType = request.getParameter("ThingType");
-} else {
-	ThingType = "drugs";
-}
-
-ThingList = Thing1;
-if (!Thing2.equals("0")){
-	ThingList = Thing1 + "~" + Thing2;
-}
-
-
-/* String Reaction = "";
-String Reaction2 = "";
-String Limit = "";
-if (request.getParameter("reaction1") !=null) Reaction = request.getParameter("reaction1");
-if (request.getParameter("reaction2") !=null) Reaction2 = request.getParameter("reaction2");
-if (request.getParameter("limit") !=null) Limit = request.getParameter("limit");
- */
+String ThingType = "";
+String ThingList = "";
+if (request.getParameter("ThingList") !=null) ThingList = request.getParameter("ThingList");
+if (request.getParameter("ThingType") !=null) ThingType = request.getParameter("ThingType");
  
  String ServerKey = "";
  ServerAuth serverAuth = new ServerAuth();
@@ -71,13 +38,13 @@ String Message = "";
 		out.println("An error has occured: " + e);
 	}
 %>
-    
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
-<title>Insert title here</title>
-    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+  
+  
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<jsp:include page="inc/head.jsp" />
+		    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
     <script type="text/javascript">
       google.load("visualization", "1", {packages:["corechart"]});
       google.setOnLoadCallback(drawChart);
@@ -106,24 +73,23 @@ String Message = "";
       window.onload = resize();
       window.onresize = resize;
     </script>
-
-</head>
-<body>
-	<div>
-		<form name="form" method="post" action="chart-responsive.jsp">
-			Type of chart:
-			<select name="ThingType">
-				<option value="drugs"<% if (ThingType.equals("drugs")){%> selected<%}%>>drugs</option>
-				<option value="reactions"<% if (ThingType.equals("reactions")){%> selected<%}%>>reactions</option>
-			</select>
-			<br>
-			Type of chart: <input type="text" name="Thing1" value="<%=Thing1%>"><br>
-			Type of chart: <input type="text" name="Thing2" value="<%=Thing2%>"><br>
-			<input type="submit">
-		</form>
-	</div>
-	<div>
-		<div id="chart_div" style="width: 100%; height: 100%;"></div>	
-	</div>
-</body>
-</html>
+	</head>
+	<body>
+		<jsp:include page="inc/header.jsp" />
+		<div id="wrapper">
+			<jsp:include page="inc/sidebar.jsp" />
+			        <div id="main-wrapper" class="col-md-11 pull-right">
+	            <div id="main">
+	              <div class="page-header">
+	                <h3>Adverse Reaction Chart</h3>
+	               </div>
+					<div>
+						<div class="img-responsive" id="chart_div" style="width: 100%; height: 100%;"></div>	
+					</div>
+	             </div>
+	        </div>
+		</div>
+		<jsp:include page="inc/scriptrefs.jsp" />
+	</body>
+</html>  
+  
