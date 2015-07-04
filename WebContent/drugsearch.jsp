@@ -31,33 +31,47 @@ try {
 }
 
 %>
-
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
-<title>Insert title here</title>
-</head>
-<body>
-	<div>
-		<form name="subForm" method="post" action="drugresults.jsp">
-			<p>
-				Enter a drug: 
-				<select name="drug1">
-				<%= DrugList %>
-				</select>
-				 <!-- or type the name: <input type="text" name="drug1a" size="40"> -->
-			</p>
-			<p>
-				Enter another drug: 
-				<select name="drug2">
-				<%= DrugList %>
-				</select>
-				 <!-- or type the name: <input type="text" name="drug2a" size="40"> -->
-			</p>
-				<input type="submit">
-		</form>
-		<p><a href="index.jsp">return</a></p>
-	</div>
-</body>
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<jsp:include page="inc/head.jsp" />
+	</head>
+	<body>
+		<jsp:include page="inc/header.jsp" />
+		<div id="wrapper">
+			<jsp:include page="inc/sidebar.jsp" />
+			        <div id="main-wrapper" class="col-md-11 pull-right">
+	            <div id="main">
+	              <div class="page-header">
+	                <h3>Drug Search</h3>
+	              </div>
+	                <div>
+	                	Search for adverse reactions involving the following drugs:
+	                </div>
+	                	<div>
+							<form name="subForm" method="post" action="drugresults.jsp">
+								<p>
+									Enter a drug: 
+									<select name="drug1">
+									<%= DrugList %>
+									</select>
+									 <!-- or type the name: <input type="text" name="drug1a" size="40"> -->
+								</p>
+								<p>
+									Enter another drug: 
+									<select name="drug2">
+									<%= DrugList %>
+									</select>
+									 <!-- or type the name: <input type="text" name="drug2a" size="40"> -->
+								</p>
+									<input type="submit">
+							</form>
+						</div>
+	             </div>
+	        </div>
+		</div>
+		<jsp:include page="inc/scriptrefs.jsp" />
+	</body>
 </html>
+
+

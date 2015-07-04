@@ -38,7 +38,7 @@ if (!Reaction.equals("0")){
 		JSONArray cols = jBody.getJSONObject("ReportOutput").getJSONArray("cols");
 		JSONArray rows = jBody.getJSONObject("ReportOutput").getJSONArray("rows");
 	
-		Records = "<table>";
+		Records = "<table  class='table table-striped'>";
 		Records += "<tr>";
 		for (int i=0; i<cols.length(); i++){
 			Records += "<th>" + cols.getString(i) + "</th>";
@@ -65,20 +65,29 @@ if (!Reaction.equals("0")){
 	Records = "No reaction selected";
 }
 %>
-    
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
-<title>Insert title here</title>
-</head>
-<body>
-	<div>
-			<h3>16553. The user can drill down through the output data where applicable</h3>
-		<div id="searchResults">
-			<%=Records %>
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<jsp:include page="inc/head.jsp" />
+	</head>
+	<body>
+		<jsp:include page="inc/header.jsp" />
+		<div id="wrapper">
+			<jsp:include page="inc/sidebar.jsp" />
+			        <div id="main-wrapper" class="col-md-11 pull-right">
+	            <div id="main">
+	              <div class="page-header">
+	                <h3>Reaction Search</h3>
+	                </div>
+	                <div>
+						<div id="searchResults" style="width:60%">
+							<%=Records %>
+						</div>
+	                </div>
+	             </div>
+	        </div>
 		</div>
-		<p><a href="index.jsp">return</a></p>
-	</div>
-</body>
+		<jsp:include page="inc/scriptrefs.jsp" />
+	</body>
 </html>

@@ -42,7 +42,7 @@ if (!Drug.equals("0")){
 		JSONArray cols = jBody.getJSONObject("ReportOutput").getJSONArray("cols");
 		JSONArray rows = jBody.getJSONObject("ReportOutput").getJSONArray("rows");
 	
-		Records = "<table>";
+		Records = "<table  class='table table-striped'>";
 		Records += "<tr>";
 		for (int i=0; i<cols.length(); i++){
 			Records += "<th>" + cols.getString(i) + "</th>";
@@ -66,22 +66,33 @@ if (!Drug.equals("0")){
 }
 
 %>
-    
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
-<title>Insert title here</title>
-</head>
-<body>
-	<div>
-		<p>
-			Search Results.
-		</p>
-		<div id="searchResults">
-			<%=Records %>
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<jsp:include page="inc/head.jsp" />
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+		
+	</head>
+	<body>
+		<jsp:include page="inc/header.jsp" />
+		<div id="wrapper">
+			<jsp:include page="inc/sidebar.jsp" />
+			        <div id="main-wrapper" class="col-md-11 pull-right">
+	            <div id="main">
+	              <div class="page-header">
+	                <h3>Drug Search</h3>
+	              </div>
+	                <div>
+	                	<div id="searchResults" style="width:60%">
+							<%=Records %>
+						</div>
+	                </div>
+	             </div>
+	        </div>
 		</div>
-		<p><a href="index.jsp">return</a></p>
-	</div>
-</body>
+		<jsp:include page="inc/scriptrefs.jsp" />
+	</body>
 </html>
+
