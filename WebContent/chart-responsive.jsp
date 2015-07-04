@@ -20,20 +20,13 @@ String Message = "";
 	try {
 		int StatusCode = 0;
 	    String JsonURL = "";
-		//String ServiceURI = "/fda/" + ServerKey + "/chart/reactions/\"abdominal pain\"~death";
-		//String ServiceURI = "/fda/" + ServerKey + "/chart/drugs/PREDNISONE";
-		
 		String ServiceURI = "/fda/" + ServerKey + "/chart/" + ThingType + "/" + ThingList;
-	
 		RestClient restClient = new RestClient();
 		JSONObject jResponse = restClient.getService(ServiceURI);
 	 	JSONObject jBody = jResponse.getJSONObject("Body");
 	 	JSONArray jRecords = new JSONArray();
 		jRecords = jBody.getJSONArray("chartdata");
-//out.println(jRecords.toString());
-
 		sResponse = jRecords.toString();
-		
 	} catch (Exception e) {
 		out.println("An error has occured: " + e);
 	}
