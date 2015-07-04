@@ -4,31 +4,26 @@
 <%@ page import="org.djw.tools.restlet.*" %>
 <%@ page import="openfda.classes.ServerAuth" %>
 <%
-
+String ServerKey = "";
 String Reaction = "";
 String Reaction2 = "";
-String Reaction1a = "";
-String Reaction2a = "";
+String ReactionList = "";
 if (request.getParameter("reaction1") !=null) Reaction = request.getParameter("reaction1");
 if (request.getParameter("reaction2") !=null) Reaction2 = request.getParameter("reaction2");
-if (request.getParameter("reaction1a") !=null) Reaction1a = request.getParameter("reaction1a");
-if (request.getParameter("reaction2a") !=null) Reaction2a = request.getParameter("reaction2a");
-
+String sResponse = "";
 String Message = "";
 String Records = "";
 if (!Reaction.equals("0")){
 	try {
-	    String ServerKey = "";
+	    
 	    ServerAuth serverAuth = new ServerAuth();
 	    ServerKey = serverAuth.getKey();
 
 		int StatusCode = 0;
 	    String JsonURL = "";
-	    String ReactionList = "";
+	    
 	    ReactionList += Reaction;
 	    if (!Reaction2.equals("0")) ReactionList += "~" + Reaction2;
-	    if (!Reaction2.equals("")) ReactionList += "~" + Reaction1a;
-	    if (!Reaction2.equals("")) ReactionList += "~" + Reaction2a;
 		String ServiceURI = "/fda/" + ServerKey + "/search/reaction/" + ReactionList;
 	
 		RestClient restClient = new RestClient();
@@ -38,7 +33,7 @@ if (!Reaction.equals("0")){
 		JSONArray cols = jBody.getJSONObject("ReportOutput").getJSONArray("cols");
 		JSONArray rows = jBody.getJSONObject("ReportOutput").getJSONArray("rows");
 	
-		Records = "<table>";
+		Records = "<table  class='table table-striped'>";
 		Records += "<tr>";
 		for (int i=0; i<cols.length(); i++){
 			Records += "<th>" + cols.getString(i) + "</th>";
@@ -61,24 +56,100 @@ if (!Reaction.equals("0")){
 	} catch (Exception e) {
 		out.println("An error has occured: " + e);
 	}
+	try {
+		int StatusCode = 0;
+	    String JsonURL = "";
+		String ServiceURI = "/fda/" + ServerKey + "/chart/reactions/" + ReactionList;
+		RestClient restClient = new RestClient();
+		JSONObject jResponse = restClient.getService(ServiceURI);
+	 	JSONObject jBody = jResponse.getJSONObject("Body");
+	 	JSONArray jRecords = new JSONArray();
+		jRecords = jBody.getJSONArray("chartdata");
+		sResponse = jRecords.toString();
+	} catch (Exception e) {
+		out.println("An error has occured: " + e);
+	}
+
 } else {
 	Records = "No reaction selected";
 }
 %>
-    
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
-<title>Insert title here</title>
-</head>
-<body>
-	<div>
-			<h3>16553. The user can drill down through the output data where applicable</h3>
-		<div id="searchResults">
-			<%=Records %>
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<jsp:include page="inc/head.jsp" />
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+	    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+	    <script type="text/javascript">
+	      google.load("visualization", "1", {packages:["corechart"]});
+	      google.setOnLoadCallback(drawChart);
+	      function drawChart() {
+	  		var jsonData = <%=sResponse%>;
+	        var data = google.visualization.arrayToDataTable(jsonData);
+	        var options = {
+	          title: 'Adverse Reactions by Age',
+	          width: "100%"
+	        };
+	
+	        var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
+	        chart.draw(data, options);
+	      }
+	      
+	      function resizeHandler () {
+	          chart.draw(data, options);
+	      }
+	      if (window.addEventListener) {
+	          window.addEventListener('resize', resizeHandler, false);
+	      }
+	      else if (window.attachEvent) {
+	          window.attachEvent('onresize', resizeHandler);
+	      }
+	      
+	      window.onload = resize();
+	      window.onresize = resize;
+	    </script>
+	</head>
+	<body>
+		<jsp:include page="inc/header.jsp" />
+		<div id="wrapper">
+			<jsp:include page="inc/sidebar.jsp" />
+			        <div id="main-wrapper" class="col-md-11 pull-right">
+	            <div id="main">
+	              <div class="page-header">
+	                <h3>Reaction Search</h3>
+	                </div>
+	                <div>
+						<div id="searchResults" style="width:60%">
+						<div><%=ReactionList.replace("~", " & ") %></div>
+						<button type="button" class="btn btn-info btn-md pull-right" data-toggle="modal" data-target="#myModal">
+	                		graph results
+	                	</button>
+						<%-- <div class="pull-right"><a href="chart-responsive.jsp?ThingType=reactions&ThingList=<%=ReactionList%>">graph results</a></div> --%>
+							<%=Records %>
+						</div>
+	                </div>
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog modal-md">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Adverse Reactions Chart</h4>
+        </div>
+        <div class="modal-body">
+          <div id="chart_div"></div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>	                
+	                
+	             </div>
+	        </div>
 		</div>
-		<p><a href="index.jsp">return</a></p>
-	</div>
-</body>
+		<jsp:include page="inc/scriptrefs.jsp" />
+	</body>
 </html>

@@ -31,32 +31,47 @@ try {
 
 %>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
-<title>Insert title here</title>
-</head>
-<body>
-	<div>
-		<form name="subForm" method="post" action="reactionresults.jsp">
-			<p>
-				Enter a reaction: 
-				<select name="reaction1">
-				<%= ReactionList%>
-				</select>
-				 <!-- or type the name: <input type="text" name="reaction1a" size="40"> -->
-			</p>
-			<p>
-				Enter another reaction: 
-				<select name="reaction2">
-				<%= ReactionList%>
-				</select>
-				<!-- or type the name: <input type="text" name="reaction2a" size="40"> -->
-			</p>
-				<input type="submit">
-		</form>
-		<p><a href="index.jsp">return</a></p>
-	</div>
-</body>
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<jsp:include page="inc/head.jsp" />
+	</head>
+	<body>
+		<jsp:include page="inc/header.jsp" />
+		<div id="wrapper">
+			<jsp:include page="inc/sidebar.jsp" />
+			        <div id="main-wrapper" class="col-md-11 pull-right">
+	            <div id="main">
+	              <div class="page-header">
+	                <h3>Reaction Search</h3>
+	                </div>
+	                <div>
+	                	<h4>Search for drugs involved with adverse reactions that have the following reactions:</h4>
+	                </div>
+					<div>
+							<form  class="form-horizontal" role="form" name="subForm" method="post" action="reactionresults.jsp">
+								<div class="form-group">
+								  <label class="control-label col-sm-2" for="email">Enter a reaction:</label>
+								  <div class="col-sm-10" style="width:40%">
+								    <select class="form-control" name="reaction1">
+									<%= ReactionList%>
+									</select>
+								  </div>
+								</div>							
+								<div class="form-group">
+								  <label class="control-label col-sm-2" for="email">Enter a reaction:</label>
+								  <div class="col-sm-10" style="width:40%">
+								    <select class="form-control" name="reaction2">
+									<%= ReactionList%>
+									</select>
+								  </div>
+								</div>							
+								<input type="submit">
+							</form>
+					</div>
+	             </div>
+	        </div>
+		</div>
+		<jsp:include page="inc/scriptrefs.jsp" />
+	</body>
 </html>

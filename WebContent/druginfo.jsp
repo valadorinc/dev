@@ -10,6 +10,7 @@ if (request.getParameter("DrugName") !=null) DrugName = request.getParameter("Dr
 
 String Message = "";
 JSONArray images = new JSONArray();
+JSONObject DrugInfo = new JSONObject();
 String Images = "";
 if (!DrugName.equals("")){
 	try {
@@ -23,13 +24,13 @@ if (!DrugName.equals("")){
 	
 		RestClient restClient = new RestClient();
 		JSONObject jResponse = restClient.getService(ServiceURI);
-out.println(jResponse.toString());
  	 	JSONObject jBody = jResponse.getJSONObject("Body");
- 	 	JSONObject DrugInfo = jBody.getJSONObject("DrugInfo");
+ 	 	DrugInfo = jBody.getJSONObject("DrugInfo");
+ 	 	
 	 	images = DrugInfo.getJSONArray("images");
  		
 	 	for (int i=0; i<images.length(); i++){
-	 		Images += "'<img src='" + images.getString(i) + "'><br>";
+	 		Images += "'<img class='img-responsive' src='" + images.getString(i) + "'><br>";
 	 	}
 	 	
 	} catch (Exception e) {
@@ -39,23 +40,50 @@ out.println(jResponse.toString());
 	Images = "No images found";
 }
 %>
-    
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
-<title>Insert title here</title>
-</head>
-<body>
-	<div>
-		<p>
-			Search Results.
-			<%=Images%>
-		</p>
-		<div id="searchResults">
-			
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<jsp:include page="inc/head.jsp" />
+	</head>
+	<body>
+		<jsp:include page="inc/header.jsp" />
+		<div id="wrapper">
+			<jsp:include page="inc/sidebar.jsp" />
+			        <div id="main-wrapper" class="col-md-11 pull-right">
+	            <div id="main">
+	              <div class="page-header">
+	                <h3>Drug Info</h3>
+	              </div>
+	              <div>
+					<dl class="dl-horizontal">
+					  <dt>Product NDC</dt>
+					  <dd><%=DrugInfo.getString("product_ndc") %></dd>
+					  <dt>Substance Name</dt>
+					  <dd><%=DrugInfo.getString("substance_name") %></dd>
+					  <dt>Product Type</dt>
+					  <dd><%=DrugInfo.getString("product_type") %></dd>
+					  <dt>Route</dt>
+					  <dd><%=DrugInfo.getString("route") %></dd>
+					  <dt>Generic Name</dt>
+					  <dd><%=DrugInfo.getString("generic_name") %></dd>
+					  <dt>Brand Name</dt>
+					  <dd><%=DrugInfo.getString("brand_name") %></dd>
+					  <dt>Manufacturer Name</dt>
+					  <dd><%=DrugInfo.getString("manufacturer_name") %></dd>
+					</dl>						
+				</div>
+	              
+	              
+	            <h4 style="padding-top:10px">Media associated with drug</h4>  
+	              
+                <div>
+                	<%=Images%>
+                </div>
+	             </div>
+	        </div>
 		</div>
-		<p><a href="index.jsp">return</a></p>
-	</div>
-</body>
+		<jsp:include page="inc/scriptrefs.jsp" />
+	</body>
 </html>
+
+			

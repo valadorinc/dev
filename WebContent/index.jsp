@@ -1,53 +1,31 @@
-<%@ page language="java" contentType="text/html; charset=US-ASCII"
-    pageEncoding="US-ASCII"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
-<title>Insert title here</title>
-</head>
-<body>
-<h1>ApplicationRx</h1>
-<p>
-	Submission for pool2.
-</p>
-<p>
-	Select functional area to get output.
-</p>
-
-<div>
-	<form name="patialDrugForm" method="post" action="partialdrugsearch.jsp">
-		<h3>REQ 16542: The user can directly type the name of the drug into the search fields.</h3>
-		Type name or partial name of the drug (ex: "od"): <input type="text" name="PartialName">
-		<p><input type="submit"></p>
-	</form>	
-</div>
-
-<div>
-	<form name="patialReactionForm" method="post" action="partialreactionsearch.jsp">
-		<h3>REQ 16549: The user can directly type the name of a reaction into the search fields.</h3>
-		Type name or partial name of the drug (ex: "pain"): <input type="text" name="PartialName">
-		<p><input type="submit"></p>
-	</form>	
-</div>
-
-<div>
-		<h3>REQ 16550: The user can select the desired reaction from a list of available reactions.</h3>
-		16553. The user can drill down through the output data where applicable - Reactions<br>
-		<a href="reactionsearch.jsp">reaction search</a>
-</div>
-
-<div>
-		<h3>REQ 16722. The user can select the desired drug from a list of available drugs..</h3>
-		<a href="drugsearch.jsp">drug search</a>
-</div>
-<div>
-		<h3>#16728. A chart is displayed based on the results returned from a user search..</h3>
-		<a href="chart-responsive.jsp">Chart</a>
-</div>
-<div>
-		<h3>Lookup table utilities.</h3>
-		<a href="util">utilities</a>
-</div>
-</body>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<jsp:include page="inc/head.jsp" />
+	</head>
+	<body>
+		<jsp:include page="inc/header.jsp" />
+		<div id="wrapper">
+			<jsp:include page="inc/sidebar.jsp" />
+			        <div id="main-wrapper" class="col-md-11 pull-right">
+	            <div id="main">
+	              <div class="page-header">
+	                <h3>ReactionRx</h3>
+	               </div>
+	                <div>
+	                	Disclaimer: ReactionRX is intended to provide helpful drug and health information for the general public 
+	                	based on data from openFDA. It is made available with the understanding that Valador Inc., the author of 
+	                	the ReactionRX Content, and openFDA are not engaged in rendering medical, health, psychological, or any 
+	                	other kind of personal professional services on this site. The ReactionRX Content should not be considered 
+	                	complete, and does not cover all diseases, ailments, physical conditions or their treatment. It should not 
+	                	be used in place of a call or visit to a medical, health or other competent professional, who should be 
+	                	consulted before adopting any of the suggestions on this site or before drawing any inferences from the 
+	                	ReactionRX Content.
+	                </div>
+	             </div>
+	        </div>
+		</div>
+		<jsp:include page="inc/scriptrefs.jsp" />
+	</body>
 </html>
