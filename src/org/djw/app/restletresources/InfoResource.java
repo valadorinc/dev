@@ -38,9 +38,16 @@ public class InfoResource extends ServerResource {
 		if (GeneralUtils.getConfigPropValue("version_file") != null){
 			VersionFile = GeneralUtils.getConfigPropValue("version_file");
 	    }
+		String BuildFile = "";
+		if (GeneralUtils.getConfigPropValue("build_file") != null){
+			BuildFile = GeneralUtils.getConfigPropValue("build_file");
+	    }
+
 		VersionFile = absolute_base_path + VersionFile;
+		BuildFile = absolute_base_path + BuildFile;
 		
-		String Version = getVersion(VersionFile);
+		String Version = getFile(VersionFile);
+		String Build = getFile(BuildFile);
 		
 		DjwToolsInfo djwTools = new DjwToolsInfo();
 		JSONObject djwInfo = djwTools.getInfo();
@@ -50,6 +57,7 @@ public class InfoResource extends ServerResource {
 		
 		jBody.put("ServiceURL", ServiceURL);
 		jBody.put("Version", Version);
+		jBody.put("Build", Build);
 		jBody.put("djwToolsInfo", djwInfo);
 
 		ResponseJson jResponse = new ResponseJson();
@@ -67,7 +75,7 @@ public class InfoResource extends ServerResource {
 	 * @return String
 	 * 		
 	 */
-	private String getVersion(String VersionFile){
+	private String getFile(String FileName){
 		String version = "";
 		BufferedReader br = null;
 		 
@@ -75,7 +83,7 @@ public class InfoResource extends ServerResource {
  
 			String sCurrentLine;
  
-			br = new BufferedReader(new FileReader(VersionFile));
+			br = new BufferedReader(new FileReader(FileName));
  
 			while ((sCurrentLine = br.readLine()) != null) {
 				version = sCurrentLine;

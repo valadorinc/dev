@@ -8,6 +8,7 @@
 int StatusCode = 0;
 String Message = "";
 String Version = "";
+String Build = "";
 String ToolsVersion = "";
 try {
     String ServerKey = "";
@@ -24,6 +25,7 @@ try {
 	if (StatusCode == 0){
  		JSONObject jBody = jResponse.getJSONObject("Body");
  		Version = jBody.getString("Version");
+ 		Build = jBody.getString("Build");
  		JSONObject djwToolsInfo = jBody.getJSONObject("djwToolsInfo");
  		ToolsVersion = djwToolsInfo.getString("djwToolsVersion");
 	} else {
@@ -53,6 +55,8 @@ try {
 					  	<dd><%=Version %></dd>
 					  	<dt>Tools Version</dt>
 					  	<dd><%=ToolsVersion %></dd>
+					  	<dt>Build</dt>
+					  	<dd><%=Build %></dd>
 					</dl>
 	                </div>
 	             </div>
