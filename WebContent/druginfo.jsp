@@ -12,6 +12,14 @@ String Message = "";
 JSONArray images = new JSONArray();
 JSONObject DrugInfo = new JSONObject();
 String Images = "";
+String ProductNDC = "";
+String SubstanceName = "";
+String ProductType = "";
+String Route = "";
+String GenericName = "";
+String BrandName = "";
+String ManufacturerName = "";
+
 if (!DrugName.equals("")){
 	try {
 	    String ServerKey = "";
@@ -26,11 +34,20 @@ if (!DrugName.equals("")){
 		JSONObject jResponse = restClient.getService(ServiceURI);
  	 	JSONObject jBody = jResponse.getJSONObject("Body");
  	 	DrugInfo = jBody.getJSONObject("DrugInfo");
- 	 	
-	 	images = DrugInfo.getJSONArray("images");
- 		
-	 	for (int i=0; i<images.length(); i++){
-	 		Images += "'<img class='img-responsive' src='" + images.getString(i) + "'><br>";
+ 	
+ 	 	if (!DrugInfo.isNull("product_ndc")) ProductNDC = DrugInfo.getString("product_ndc");
+ 	 	if (!DrugInfo.isNull("substance_name")) SubstanceName = DrugInfo.getString("substance_name");
+ 	 	if (!DrugInfo.isNull("product_type")) ProductType = DrugInfo.getString("product_type");
+ 	 	if (!DrugInfo.isNull("route")) Route = DrugInfo.getString("route");
+ 	 	if (!DrugInfo.isNull("generic_name")) GenericName = DrugInfo.getString("generic_name");
+ 	 	if (!DrugInfo.isNull("brand_name")) BrandName = DrugInfo.getString("brand_name");
+ 	 	if (!DrugInfo.isNull("manufacturer_name")) ManufacturerName = DrugInfo.getString("manufacturer_name");
+
+	 	if (!DrugInfo.isNull("images")){
+	 		images = DrugInfo.getJSONArray("images");
+		 	for (int i=0; i<images.length(); i++){
+		 		Images += "'<img class='img-responsive' src='" + images.getString(i) + "'><br>";
+		 	}
 	 	}
 	 	
 	} catch (Exception e) {
@@ -57,26 +74,24 @@ if (!DrugName.equals("")){
 	              <div>
 					<dl class="dl-horizontal">
 					  <dt>Product NDC</dt>
-					  <dd><%=DrugInfo.getString("product_ndc") %></dd>
+					  <dd><%=ProductNDC %></dd>
 					  <dt>Substance Name</dt>
-					  <dd><%=DrugInfo.getString("substance_name") %></dd>
+					  <dd><%=SubstanceName %></dd>
 					  <dt>Product Type</dt>
-					  <dd><%=DrugInfo.getString("product_type") %></dd>
+					  <dd><%=ProductType%></dd>
 					  <dt>Route</dt>
-					  <dd><%=DrugInfo.getString("route") %></dd>
+					  <dd><%=Route %></dd>
 					  <dt>Generic Name</dt>
-					  <dd><%=DrugInfo.getString("generic_name") %></dd>
+					  <dd><%=GenericName%></dd>
 					  <dt>Brand Name</dt>
-					  <dd><%=DrugInfo.getString("brand_name") %></dd>
+					  <dd><%=BrandName %></dd>
 					  <dt>Manufacturer Name</dt>
-					  <dd><%=DrugInfo.getString("manufacturer_name") %></dd>
+					  <dd><%=ManufacturerName %></dd>
 					</dl>						
 				</div>
 	              
-	              
-	            <h4 style="padding-top:10px">Media associated with drug</h4>  
-	              
                 <div>
+                <h4 style="padding-top:10px">Media associated with drug</h4> 
                 	<%=Images%>
                 </div>
 	             </div>
