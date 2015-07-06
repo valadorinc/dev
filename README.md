@@ -1,22 +1,35 @@
-##Valador Pool2 Submission##
-
-Pool Two: Development Pool: In addition to the Description, above, the Quoter must demonstrate that they followed the U.S. Digital Services Playbook by providing evidence in the repository. The README.md file should also make reference to the following for Pool Two Development:
 a. assigned one leader, gave that person authority and responsibility and held that person accountable for the quality of the prototype submitted
 Valador follows the Agile Scrum methodology for design and development.  During the kick-off meeting for this Project, Valador assigned Kevin Sadeghian as the Product Owner, then worked to define the scope of the project based on the RFQ content.  Mr. Sadeghian is a Certified Scrum Product Owner (CSPO) and was provided with the authority and responsibility to complete the Project; and was held accountable for the quality and timeliness of the final prototype and accompanying artifacts.
 
-
-b. assembled a multidisciplinary and collaborative team that includes at a minimum two of the labor categories limited to the Development Pool labor categories to develop the prototype as quoted in Attachment C. The quoter’s proposed mix of labor categories and level of effort for its working prototype, as reflected in Attachment C, shall be evaluated to assess the quoter’s understanding and capability to supply agile delivery services c. used at least five modern and open-source technologies, regardless of architectural layer (frontend, backend etc)
+b. assembled a multidisciplinary and collaborative team that includes at a minimum two of the labor categories limited to the Development Pool labor categories to develop the prototype as quoted in Attachment C. The quoter’s proposed mix of labor categories and level of effort for its working prototype, as reflected in Attachment C, shall be evaluated to assess the quoter’s understanding and capability to supply agile delivery services 
 Valador assembled a team which included the following Valador employees:
-Kevin Sadeghian – Product Owner
-Philip Stroh – Software Engineer
-Paulo Ordevez – Graphic Designer 
-Adelia Nichols – Graphic Designer 
-David White – System Architect
-Sean Yao – Software Developer
-Ben Franzini – Technical Writer
-Each of these individuals has different skillsets and varying years of experience. The resource estimates for each team member were calculated, factored into the project budget, documented in the project PMP and approved by Valador’s CEO to ensure availability throughout the project.
 
+Labor Category	GSA Labor Category	Name
+Technical Architect	Senior Systems Engineer	Ben Franzini
+Front End Web Developer	Developer	Philip Stroh, Paulo Ordoveza
+Back End Web Developer	Developer	David White
+DevOps Engineer	Software Engineer	David White
+
+Each of these individuals has different skillsets and varying years of experience. The resource estimates for each team member were calculated, factored into the project budget, documented in the project PMP and approved by Valador’s CEO to ensure availability throughout the project.
 Additionally, Valador set up workspace for the duration of the project in one of our conference rooms.  The room was equipped with four computers (each with two monitors), a projector, and a whiteboard.  For the majority of the Project the team worked in the conference room and held all Sprint related meetings in the same workspace.  This allowed problems to be solved quickly and developers to collaborate when they ran into a roadblock.  This was especially important for this Project given the short duration.  Mr. Franzini was working remotely from out of state so the team utilized Skype, Webex meetings, and teleconferences to included him in the collaborative working process. 
+
+c. used at least five modern and open-source technologies, regardless of architectural layer (frontend, backend etc)
+
+Valador used the following open-source technologies in the development of the prototype:
+•	Bootstrap
+•	PHP
+•	Google Charts
+•	Ajax
+•	jQuery
+•	MySQL
+•	Java
+•	Restlet
+•	Eclipse
+•	Git
+•	Jenkins
+•	JSP
+•	Tomcat
+
 
 
 d. deployed the prototype on an Infrastructure as a Service (IaaS) or Platform as a Service (PaaS) provider, and indicated which provider was used
@@ -29,15 +42,15 @@ f. set up or used a continuous integration system to automate the running of tes
 Valador chose Jenkins for our CI tool deployed on the EC2 servers which was linked to our git repository on GitHub for automatic builds when code was checked into the master branch.
 
 g. set up or used configuration management
-Valador chose git as our configuration management tool.  We made use of GitHub for the origin repository and managed branches through pull requests.  ADD TP SCREENSHOTS.
+Valador chose git as our configuration management tool.  We made use of GitHub for the origin repository and managed branches through pull requests.  
 
 
 h. set up or used continuous monitoring
-Valador used Nagios for continuous monitoring of the website, services, and database. 
+Valador deployed the prototype on Amazon AWS platform which is fully FedRAMP certified. Tools like CoudWatch provide continuous monitoring of logs and metrics collection which work in concert with application frameworks to provide alarm thresholds and alerts. 
 
 
 i. deploy their software in a container (i.e., utilized operating-system-level virtualization)
-The application is deployed as an OVF template which is playable in any number of virtual appliance players such as VMWare, VirtualBox or MS Hyper-v.
+The application is deployed as a Docker image.  Valador uploaded versions to Dockerhub. Unfortunately the site was experiencing problems so we have placed the image here. 
 
 j. used an interactive approach, where feedback informed subsequent work or versions of the prototype
 Valador followed our development approach which is based on the Agile Scrum methodology.  This method promotes disciplined project management practices that encourage frequent inspection of the product, involvement of stakeholders/people, and flexible adaptation of the requirements. Teamwork, self-organization, and accountability are encouraged to allow for rapid delivery of high-quality software and a business approach that aligns development with customer/user needs. Valador followed the project kick-of meeting with a user focus group to help understand what people need, that the preliminary design concepts were simple and intuitive, and that the requirements being developed addressed the whole experience, from start to finish.  Customer-driven, or in this case user-driven feedback based on focus groups, prioritized requirements are broken down into tasks for short development sprints that result in reviewable, potentially shippable product increments.
@@ -48,7 +61,7 @@ This approach allows the Customer to use and evaluate the system early and frequ
 This Project included three Sprints.  Given the short timeframe, feedback was solicited from both team members and other Valador employees (ie. Stakeholders/People) during each Sprint.  The Product Owner was ultimately responsible for the end result.  Valador used Target Process to keep track of the requirements and tasks to be implemented in the solution. 
 
 k. provided sufficient documentation to install and run their prototype on another machine
-Valador provided an installation guide which is included in <<David/Phil>>
+Valador provided an installation guide which is included in the Git repository here.
 
 l. prototype and underlying platforms used to create and run the prototype are openly licensed and free of charge
 The prototype and underlying platforms used to create and run the prototype are openly licensed and free of charge.  These include:  
@@ -65,3 +78,5 @@ The prototype and underlying platforms used to create and run the prototype are 
 •	Git
 •	Jenkins
 •	Linux
+
+ 
