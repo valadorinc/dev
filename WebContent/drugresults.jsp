@@ -21,7 +21,7 @@ String Message = "";
 String Records = "";
 String ServerKey = "";
 String sResponse = "";
-if (!Drug.equals("0")){
+if (!Drug.equals("0") || !Drug2.equals("0")){
 	try {
 	    
 	    ServerAuth serverAuth = new ServerAuth();
@@ -29,11 +29,21 @@ if (!Drug.equals("0")){
 
 		int StatusCode = 0;
 	    String JsonURL = "";
-	    DrugList += Drug;
-	    if (!Drug2.equals("0")) DrugList += "~" + Drug2;
+	    if (!Drug.equals("0") && Drug2.equals("0")){
+	    	DrugList = Drug;
+	    }
+	    if (Drug.equals("0") && !Drug2.equals("0")){
+	    	DrugList = Drug2;
+	    }
+	    if (!Drug.equals("0") && !Drug2.equals("0")){
+	    	DrugList =  "~" + Drug2;;
+	    }
+System.out.println("Drug1: " + Drug + "  Drug2: " + Drug2);
+	    
+/* 	    if (!Drug2.equals("0")) DrugList += "~" + Drug2;
 	    if (!Drug1a.equals("")) DrugList += "~" + Drug1a;
 	    if (!Drug2a.equals("")) DrugList += "~" + Drug2a;
-	
+ */	
 		String ServiceURI = "/fda/" + ServerKey + "/search/drug/" + DrugList;
 	
 		RestClient restClient = new RestClient();
@@ -69,9 +79,11 @@ if (!Drug.equals("0")){
 		RestClient restClient = new RestClient();
 		JSONObject jResponse = restClient.getService(ServiceURI);
 	 	JSONObject jBody = jResponse.getJSONObject("Body");
-	 	JSONArray jRecords = new JSONArray();
-		jRecords = jBody.getJSONArray("chartdata");
-		sResponse = jRecords.toString();
+	 	if (!jBody.isNull("chartdata")){
+		 	JSONArray jRecords = new JSONArray();
+			jRecords = jBody.getJSONArray("chartdata");
+			sResponse = jRecords.toString();
+	 	}
 	} catch (Exception e) {
 		out.println("An error has occured: " + e);
 	}
