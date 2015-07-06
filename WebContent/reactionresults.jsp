@@ -13,7 +13,7 @@ if (request.getParameter("reaction2") !=null) Reaction2 = request.getParameter("
 String sResponse = "";
 String Message = "";
 String Records = "";
-if (!Reaction.equals("0")){
+if (!Reaction.equals("0") || !Reaction2.equals("0")){
 	try {
 	    
 	    ServerAuth serverAuth = new ServerAuth();
@@ -22,7 +22,19 @@ if (!Reaction.equals("0")){
 		int StatusCode = 0;
 	    String JsonURL = "";
 	    
-	    ReactionList += Reaction;
+	    if (!Reaction.equals("0")){
+	    	ReactionList = Reaction;
+	    }
+	    if (!Reaction.equals("0") && Reaction.equals("0")){
+	    	ReactionList = Reaction;
+	    }
+	    if (Reaction.equals("0") && !Reaction2.equals("0")){
+	    	ReactionList = Reaction2;
+	    }
+	    if (!Reaction.equals("0") && !Reaction2.equals("0")){
+	    	ReactionList =  "~" + Reaction2;;
+	    }
+
 	    if (!Reaction2.equals("0")) ReactionList += "~" + Reaction2;
 		String ServiceURI = "/fda/" + ServerKey + "/search/reaction/" + ReactionList;
 	
