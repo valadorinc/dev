@@ -4,33 +4,39 @@ Installation procedure for applicationRx.
 
 For WINDOWS
 
-1. Download docker for windows 
+1. Download the docker container with the pool2 submission.
+http://pool2.valador.net/18F/valador_pool2.tar
+Be sure to save it to a location on your local drive. 
+Ex: C:\Downloads\valador_pool2.tar
+
+2. Download docker for windows 
 https://github.com/boot2docker/windows-installer/releases/tag/v1.7.0
 
-2. Run the installer and accept all defaults.
+3. Run the installer and accept all defaults.
 
-3. Once installed launch docker by clicking on "Boot2Docker Start" icon on the deskop.
+4. Once installed launch docker by clicking on "Boot2Docker Start" icon on the deskop.
 
-4. When the startup is complete you will be at a command prompt "$". Pull the valador 
-pool2 image from DockerHub by typing "docker pull valadorinc/valador_pool2" and 
-press enter.
+5. When the startup is complete you will be at a command prompt "$". Change to the 
+directory where the container has been downloaded.
+cd C:\Downloads
 
-5. The image will download into the docker client. When the download is complete the 
-screen may be cluttered. If so type "clear" to clear the screen.  
+6. Load the image into the docker environment.
+docker load < valador_pool2.tar  
 
-6. Get the IP address of the docker client. We will use this to actually connect to the 
+7. Get the IP address of the docker client. We will use this to actually connect to the 
 container. Type "boot2docker ip". Make note of the ip address as we will need it later.
 
-7. Type "docker images" to display the downloaded image information. The valador image 
-should be named "valadorinc/valador_pool2"
+8. Type "docker images" to display the downloaded image information. The valador image 
+should be named "valador_pool2"
 
-8. Start the container by typing "docker run -p 80:8080 -i -t valadorinc/valador_pool2"
+9. Start the container by typing 
+docker run -p 80:8080 -i -t valador_pool2
 
-9. You will get a new prompt looking something like this "[root@f217f9c3ee07 /]#"  
+10. You will get a new prompt looking something like this "[root@f217f9c3ee07 /]#"  
 You are now connected to the container. To start the application type 
-"./start-apprx.sh" and enter.
+./start-apprx.sh
 
-10. A few message will dispay, but when the prompt comes back the application will 
+11. A few message will dispay, but when the prompt comes back the application will 
 be running.  DO NOT close the window as this will stop the container. Open an browser 
 and enter the ip address we recorded earlier. 
 
