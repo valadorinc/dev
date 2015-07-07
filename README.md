@@ -1,13 +1,13 @@
 [http://pool2.valador.net:8080/openfda-dev/](http://pool2.valador.net:8080/openfda-dev/)
 ###(A) Assign A Leader
-Valador follows the Agile Scrum methodology for design and development.  During the kick-off meeting for this Project, Valador assigned Kevin Sadeghian as the Product Owner, then worked to define the scope of the project based on the RFQ content.  Mr. Sadeghian is a Certified Scrum Product Owner and was given the authority and responsibility to complete the Project; and was held accountable for the quality and timeliness of the final prototype and accompanying artifacts.
+Valador follows the Agile Scrum methodology for design and development.  During the kick-off meeting for this Project, Valador assigned Kevin Sadeghian as the Technical Architect, then worked to define the scope of the project based on the RFQ content.  Mr. Sadeghian is a Certified Scrum Product Owner and was given the authority and responsibility to complete the Project; and was held accountable for the quality and timeliness of the final prototype and accompanying artifacts.
 
 ###(B) Multidisciplinary Team
 Valador assembled a team of Valador employees with different skillsets and varying years of experience:
 
 |Labor Category|GSA Labor Category|Name|
 |---|---|---|
-|Technical Architect|Senior Systems Engineer|Ben Franzini|
+|Technical Architect|Senior Systems Engineer|Kevin Sadeghian|
 |Front End Web Developer|Developer|Philip Stroh, Paulo Ordoveza|
 |Back End Web Developer|Developer|David White|
 |DevOps Engineer|Software Engineer|David White|
