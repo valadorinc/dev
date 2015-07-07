@@ -61,7 +61,7 @@ At the end of the Sprint, completed products are demonstrated at a Sprint Review
 This Project included three Sprints. The Product Owner was ultimately responsible for the end result. 
 
 ###(K) Installation Documentation 
-Valador’s installation guide is included in the Git repository here.
+Valador’s installation guide is included in the Git repository [here](https://github.com/valadorinc/openfda-pool2/blob/master/docs/InstallGuide_pool2.txt).
 
 ###(L) Openly Licensed Prototype and Platforms 
 The prototype and underlying platforms used to create and run the prototype are openly licensed and free of charge.  These include:  
