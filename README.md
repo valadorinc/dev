@@ -49,7 +49,7 @@ Valador deployed the prototype on Amazon AWS platform which is fully FedRAMP cer
 
 
 ###(I) Deploy in a Container 
-The application is deployed as a Docker image.  Valador uploaded versions to Dockerhub. Unfortunately the site was experiencing problems so we have placed the image here. 
+The application is deployed as a Docker image.  Valador uploaded versions to Dockerhub. Unfortunately the site was experiencing problems so we have placed the image [here](http://pool2.valador.net/18F/valador_pool2.tar). 
 
 ###(J) Interactive Approach
 Valador followed our development approach based on the Agile Scrum methodology. The project kick-of meeting was followed by a user focus group to develop requirements based on user need. These requirements, tracked using Target Process, created the Product Backlog which is controlled by the Product Owner to set overall priorities in the development schedule. 
