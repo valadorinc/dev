@@ -13,7 +13,7 @@ Valador assembled a team of Valador employees with different skillsets and varyi
 
 The resource estimates for each were factored into the project budget, documented in the project PMP and approved by Valador’s CEO to ensure availability.
 
-Valador set up workspace for the duration of the project in one of our conference rooms with four workstations, a projector, and a whiteboard.  The team worked in the conference room which allowed problems to be solved quickly through collaboration. Mr. Franzini was working remotely so the team utilized Skype, Webex meetings, and teleconferences to include him in the collaborative process. 
+Valador set up workspace for the duration of the project in one of our conference rooms with four workstations, a projector, and a whiteboard.  The team worked in the conference room which allowed problems to be solved quickly through [collaboration](https://github.com/valadorinc/openfda-pool2/tree/master/docs/TeamCollaboration). Mr. Franzini was working remotely so the team utilized Skype, Webex meetings, and teleconferences to include him in the collaborative process. 
 
 ###(C) Technologies
 Valador used open-source technologies in the development of the prototype including:
