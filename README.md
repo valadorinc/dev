@@ -74,9 +74,6 @@ The prototype and underlying platforms used to create and run the prototype are 
 *	AngularJS
 *	Java
 *	Restlet 2.x
-*	Eclipse
-*	Git
-*	Jenkins
 *	Linux
 
  
